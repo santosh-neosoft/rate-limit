@@ -1,0 +1,21 @@
+{
+  "name": "rate-limiter",
+  "version": "1.0.0",
+  "description": "multipale call from IP",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "limiter"
+  ],
+  "author": "santosh suryawanshi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "*",
+    "cookie-parser": "*",
+    "express-session": "*",
+    "body-parser": "*",
+    "express-rate-limit": "*"
+  }
+}
