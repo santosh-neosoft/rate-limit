@@ -18,6 +18,9 @@ app.set('view options', {defaultLayout: 'layout'});
 
 app.use(partials());
 app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'/node_modules/videojs-seek-buttons/dist')));
+app.use(express.static(path.join(__dirname,'/node_modules/youtube-video-js/dist')));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(cookieParser('santosh'));

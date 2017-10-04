@@ -18,9 +18,11 @@
     "express": "*",
     "express-partials": "^0.3.0",
     "express-rate-limit": "*",
-    "express-session": "*"
+    "express-session": "*",
+    "videojs-seek-buttons": "^1.1.0"
   },
   "devDependencies": {
-    "video.js": "^6.2.7"
+    "video.js": "^6.2.7",
+    "youtube-video-js": "^1.6.2"
   }
 }
