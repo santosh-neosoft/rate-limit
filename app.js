@@ -2,6 +2,7 @@ const express      = require('express');
 const cookieParser = require('cookie-parser');
 const session      = require('express-session');
 const bodyParser   = require('body-parser');
+const partials = require('express-partials');
 const RateLimit    = require('express-rate-limit');
 const path         = require('path'); 
 var count = 0;
@@ -9,9 +10,14 @@ const app = express();
 
 console.log(path.resolve(__dirname,'..'));
 
-// set variables 
-app.set('port', process.env.port || 3000);
-app.set('view engine','html');
+// set variables and  view engine setup
+app.set('port', process.env.port || 4000);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.set('view options', {defaultLayout: 'layout'});
+
+app.use(partials());
+app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(cookieParser('santosh'));
@@ -28,9 +34,14 @@ app.use(session({
     message: "Too many accounts created from this IP, please try again after an hour"
   });
 app.get('/',function(req,res){
- res.send('Welcome');
+ res.render('index');
 })
-
+app.get('/video',function(req,res){
+    res.render('video');
+});
+app.get('/icon',function(req,res){
+    res.render('sample');
+});
 app.get('/limit',Limiter,function(req,res){
     var ip = req.ip;
     var message = "After 5 hit you wont be able to access API ";

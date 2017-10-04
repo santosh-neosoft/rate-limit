@@ -12,10 +12,15 @@
   "author": "santosh suryawanshi ",
   "license": "ISC",
   "dependencies": {
-    "express": "*",
-    "cookie-parser": "*",
-    "express-session": "*",
     "body-parser": "*",
-    "express-rate-limit": "*"
+    "cookie-parser": "*",
+    "ejs": "^2.5.7",
+    "express": "*",
+    "express-partials": "^0.3.0",
+    "express-rate-limit": "*",
+    "express-session": "*"
+  },
+  "devDependencies": {
+    "video.js": "^6.2.7"
   }
 }

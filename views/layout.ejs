@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8">
+     <title>Videojs</title>
+         <!--STYLES-->
+	<link rel="stylesheet" href="/styles/cosmo.min.css">
+	<!-- <link rel="stylesheet" href="/styles/hu.css"> -->
+	<link href="//vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">
+	<link href="//cdn.rawgit.com/mmcc/videojs-skin-twitchy/v1.0.0/dist/videojs-skin-twitchy.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="/styles/style.css">
+	
+	<style>
+			.icon-list li span { font-size: 150% }
+    </style>
+	<!--STYLES END-->
+<script src="/js/dependencies/jquery-1.12.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+
+
+   </head>
+    <nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="http://localhost:4000/">App </a>
+			</div>
+       <div class="collapse navbar-collapse" id="mynavbar">
+		   <ul class="nav navbar-nav">
+				<li class="active"><a href="/video">video</a></li>
+				<li><a href="/video2">video 2</a></li>
+				<li><a href="/icon">Icons</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>santosh</li>				
+			</ul>
+		</div>
+	</div>
+</nav>
+   <body>	
+     <%- body %>
+     <!--SCRIPTS-->
+    
+    <script src="/js/dependencies/jquery.validate.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>  
+    <script src="//vjs.zencdn.net/5.19/video.min.js"></script>
+	<!--SCRIPTS END-->
+	
+	<script>
+	
+		// var myPlayer = videojs('my-player',{
+		// 	muted :true,
+		// 	controls: true, 
+		// 	preload: "auto"
+
+		// 	// controlBar: {
+		// 	// 	//fullscreenToggle: false //to disable to fullscreen toggle
+		// 	// 	//volumeControl: false
+  		// 	// }
+		// });
+		
+		var myPlayer = videojs('my-player', {
+			// 'controls': false,
+			// 'autoplay': true,
+			// 'preload':  'auto',
+			// 'loop':       true,
+			'aspectRatio':"640:267",
+			'playbackRates': [1, 1.5, 2]
+		}).ready(function(){
+			//this.playbackRate(2.0);
+		});	
+		$('#videojsplay').click(function(evt){
+			evt.preventDefault();
+			//myPlayer.play();
+		});
+	</script>
+	
+   </body>
+
+ </html>
+

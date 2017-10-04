@@ -1,0 +1,50 @@
+<div class="container">
+    <video
+    id="my-player"
+    class="video-js vjs-skin-twitchy vjs-big-play-centered "
+    controls
+    
+    preload="auto"
+    poster="//vjs.zencdn.net/v/oceans.png"
+    data-setup='{
+      "controlBar": {
+                  "playToggle": true,
+                  "volumeMenuButton":{
+                    "inline":false,
+                    "vertical":true
+                  },
+                  "currentTimeDisplay": true,
+                  "timeDivider": false,
+                  "durationDisplay": false,
+                  "progressControl": {
+                    "seekBar": {
+                      "loadProgressBar": true,
+                      "mouseTimeDisplay": true,
+                      "playProgressBar": true
+                    }
+                  },
+                  "liveDisplay": false,
+                  "remainingTimeDisplay": true,
+                  "customControlSpacer": false,
+                  "playbackRateMenuButton": true,
+                  "chaptersButton": true,
+                  "subtitlesButton": false,
+                  "captionsButton": true,
+                  "fullscreenToggle": true
+                }
+  }'>
+  <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
+  <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm"></source>
+  <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg"></source>
+  <p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a
+    web browser that
+    <a href="http://videojs.com/html5-video-support/" target="_blank">
+      supports HTML5 video
+    </a>
+  </p>
+</video>
+<div class="col-sm-6">
+    <button id="videojsplay" class="btn btn-block facebook"><i class="fafa-facebook"></i> play</button>
+</div>
+</div>
