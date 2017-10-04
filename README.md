@@ -1,5 +1,8 @@
 # rate-limit
 API which limit the no of hits made by IP 
+
+  for accessing rate limit API hit http://localhost:3000/limit on browser. 
+# Videojs Demo app  
  <video
     id="my-player"
     class="video-js vjs-default-skin vjs-big-play-centered "
