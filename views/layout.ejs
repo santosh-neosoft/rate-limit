@@ -9,6 +9,7 @@
 	<link href="//vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">
 	<link href="//cdn.rawgit.com/mmcc/videojs-skin-twitchy/v1.0.0/dist/videojs-skin-twitchy.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="/styles/style.css">
+	<link rel="stylesheet" href="/styles/videojs.addThis.css">
 	<link href="videojs-seek-buttons.css" rel="stylesheet">
 	<style>
 			.icon-list li span { font-size: 150% }
@@ -16,7 +17,8 @@
 	<!--STYLES END-->
 <script src="/js/dependencies/jquery-1.12.3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
-
+<script src="//vjs.zencdn.net/5.19/video.min.js"></script>
+<script src="js/videojs.addThis.js"></script>
 
    </head>
     <nav class="navbar navbar-default">
@@ -49,9 +51,9 @@
     <script src="/js/dependencies/jquery.validate.min.js"></script>
     <script src="/js/angular.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>  
-	<script src="//vjs.zencdn.net/5.19/video.min.js"></script>
+
 	<script src="/videojs-seek-buttons.min.js"></script>
-	<script src="youtube-video.js"></script>
+	<!-- <script src="youtube-video.js"></script> -->
 	<!--SCRIPTS END-->
 	
 	<script>
@@ -74,9 +76,32 @@
 			// 'loop':       true,
 			'aspectRatio':"640:267",
 			'playbackRates': [1, 1.5, 2]
+			// 'plugins': {
+			// 	'addThis': {
+			// 	  'reddit': false,
+			// 	  'delicious': false,
+			// 	  'website_url': "http://www.google.com"
+			// 	}
+			// }
 		}).ready(function(){
 			//this.playbackRate(2.0);
 		});	
+		// Get the current player's VideoTrackList object.
+		//var videoTrackList = myPlayer.videoTracks();
+
+		// // Listen to the "change" event.
+		// videoTrackList.addEventListener('change', function() {
+
+		// // Log the currently enabled VideoTrack label.
+		// for (var i = 0; i < videoTrackList.length; i++) {
+		// 	var track = videoTrackList[i];
+
+		// 	if (track.enabled) {
+		// 	videojs.log(track.label);
+		// 	return;
+		// 	}
+		// }
+		// });
 		myPlayer.seekButtons({
 			forward: 30,
 			back: 10

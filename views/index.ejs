@@ -3,13 +3,14 @@
     id="my-player"
     class="video-js vjs-skin-twitchy vjs-big-play-centered "
     controls
-    
+    mute="true"
     preload="auto"
     poster="//vjs.zencdn.net/v/oceans.png"
     data-setup='{
+      "plugins":{"addThis":{"website_url": "http://www.google.com","reddit":false,"delicious":false}},
       "controlBar": {
         
-                  "playToggle": true,
+                  "playToggle": true, 
                   "volumeMenuButton":{
                     "inline":false,
                     "vertical":true
@@ -37,6 +38,7 @@
   <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
   <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm"></source>
   <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg"></source>
+  <track kind="captions" src="/vtt/captions.vtt" srclang="en" label="English"></track>
   <p class="vjs-no-js">
     To view this video please enable JavaScript, and consider upgrading to a
     web browser that
