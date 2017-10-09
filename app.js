@@ -18,8 +18,11 @@ app.set('view options', {defaultLayout: 'layout'});
 
 app.use(partials());
 app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'/node_modules/videojs-socialshare')));
 app.use(express.static(path.join(__dirname,'/node_modules/videojs-seek-buttons/dist')));
 app.use(express.static(path.join(__dirname,'/node_modules/video.js/dist')));
+app.use(express.static(path.join(__dirname,'/node_modules/videojs-contrib-ads/dist')));
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));

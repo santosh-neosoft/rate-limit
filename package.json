@@ -19,7 +19,9 @@
     "express-partials": "^0.3.0",
     "express-rate-limit": "*",
     "express-session": "*",
-    "videojs-seek-buttons": "^1.1.0"
+    "videojs-contrib-ads": "^5.1.0",
+    "videojs-seek-buttons": "^1.1.0",
+    "videojs-socialshare": "^1.0.1"
   },
   "devDependencies": {
     "video.js": "^6.2.7",

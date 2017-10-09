@@ -64,3 +64,40 @@ body {
     position: absolute;
     bottom: 0; right: 0;
   } */
+
+  .video-container {
+    width: 640px;
+    margin: 0 auto;
+  }
+  pre {
+    white-space: pre-wrap;
+  }
+  pre.prettyprint ol {
+    margin: 0;
+    padding: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    list-style: none;
+  }
+  
+  pre {
+    font-size: 10px;
+  }
+  
+  blockquote {
+    background-color: #fcf8f2;
+    border-color: #f0ad4e;
+  }
+  blockquote.red {
+    background-color: #fdf7f7;
+    border-color: #d9534f;
+  }
+  blockquote.red h4 {
+    color: #d9534f;
+  }
+  blockquote p {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+ 

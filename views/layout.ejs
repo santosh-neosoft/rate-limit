@@ -9,17 +9,23 @@
 	<link href="//vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">
 	<link href="//cdn.rawgit.com/mmcc/videojs-skin-twitchy/v1.0.0/dist/videojs-skin-twitchy.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="/styles/style.css">
-	<link rel="stylesheet" href="/styles/videojs.addThis.css">
+	<!-- <link rel="stylesheet" href="/videojs.ads.css"> -->
+	<!-- <link rel="stylesheet" href="/styles/videojs.addThis.css"> -->
 	<link href="videojs-seek-buttons.css" rel="stylesheet">
 	<style>
 			.icon-list li span { font-size: 150% }
     </style>
 	<!--STYLES END-->
 <script src="/js/dependencies/jquery-1.12.3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
-<script src="//vjs.zencdn.net/5.19/video.min.js"></script>
-<script src="js/videojs.addThis.js"></script>
 
+<script src="//vjs.zencdn.net/5.19/video.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.6.6/videojs-contrib-hls.js"></script>
+<!-- <script src="/js/video.dev.js"></script> -->
+<!-- <script src="/videojs.ads.js"></script> -->
+<!-- <link href="/styles/socialOverlay.css" rel="stylesheet" /> -->
+<link rel="stylesheet" href="/videojs.socialShare.css">
+<script src="/videojs.socialShare.js"></script>
+<!-- <script src="/js/socialOverlay.js"></script> -->
    </head>
     <nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -70,12 +76,13 @@
 		// });
 		
 		var myPlayer = videojs('my-player', {
+			'techOrder': ["html5", "flash"],
 			// 'controls': false,
 			// 'autoplay': true,
 			// 'preload':  'auto',
 			// 'loop':       true,
 			'aspectRatio':"640:267",
-			'playbackRates': [1, 1.5, 2]
+			'playbackRates': [1, 1.5, 2],
 			// 'plugins': {
 			// 	'addThis': {
 			// 	  'reddit': false,
@@ -83,6 +90,9 @@
 			// 	  'website_url': "http://www.google.com"
 			// 	}
 			// }
+				'plugins':{
+					'socialOverlay': {"onScreen": true} 
+				}
 		}).ready(function(){
 			//this.playbackRate(2.0);
 		});	
@@ -102,6 +112,18 @@
 		// 	}
 		// }
 		// });
+		myPlayer.socialShare({
+			facebook: { // optional, includes a Facebook share button (See the [Facebook documentation](https://developers.facebook.com/docs/sharing/reference/share-dialog) for more information)
+			shareUrl: 'https://www.facebook.com/narendramodi/', // optional, defaults to window.location.href
+			shareImage: '', // optional, defaults to the Facebook-scraped image
+			shareText: 'Narendra Modi'
+			},
+			twitter: { // optional, includes a Twitter share button (See the [Twitter documentation](https://dev.twitter.com/web/tweet-button/web-intent) for more information)
+			handle: '', // optional, appends `via @handle` to the end of the tweet 
+			shareUrl: 'https://twitter.com/narendramodi', // optional, defaults to window.location.href
+			shareText: 'Narendra Modi' 
+			}
+		});
 		myPlayer.seekButtons({
 			forward: 30,
 			back: 10
@@ -110,16 +132,34 @@
 			evt.preventDefault();
 			//myPlayer.play();
 		});
-		var video = new YoutubeVideo({
-			el: document.getElementsById('my-player1')
-		})
-		console.log(video);
-		video.load().then(() => {
-			video.play();
-			video.pause();
-		});
+		// var video = new YoutubeVideo({
+		// 	el: document.getElementsById('my-player1')
+		// })
+		// console.log(video);
+		// video.load().then(() => {
+		// 	video.play();
+		// 	video.pause();
+		// });
+		
 	</script>
-	
+<!-- <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '965865003527790',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script> -->
    </body>
 
  </html>
