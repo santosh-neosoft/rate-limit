@@ -1,13 +1,12 @@
 (function() {
 	'use strict';
-	var Button = videojs.getComponent('Button');
-	var Component = videojs.getComponent('Component');
+	
 	// Create the button
-	videojs.ShareButton = videojs.extend(Button,{
-		constructor: function( player, options ) {
+	videojs.ShareButton = videojs.Button.extend({
+		init: function( player, options ) {
 			// Initialize the button using the default constructor
-			Button.call( this, player, options );
-			this.addClass('vjs-share-button');	
+			videojs.Button.call( this, player, options );
+			
 		}
 	});
 	
@@ -18,11 +17,10 @@
 	videojs.ShareButton.prototype.options_ = {};
 	
 	// videojs.Button uses this function to build the class name.
-	// videojs.ShareButton.prototype.buildCSSClass = function() {
-	// 	// Add our className to the returned className
-	// 	return 'vjs-share-button ' + this.prototype.buildCSSClass.call(this);
-		
-	// };
+	videojs.ShareButton.prototype.buildCSSClass = function() {
+		// Add our className to the returned className
+		return 'vjs-share-button ' + videojs.Button.prototype.buildCSSClass.call(this);
+	};
 	
 	// videojs.Button already sets up the onclick event handler, we just need to overwrite the callback
 	videojs.ShareButton.prototype.onClick = function( e ) {
@@ -63,9 +61,10 @@
 		// We no longer use this variable so release it.
 		delete this.overlay_;
 	};
-
 	
-//	videojs.registerComponent('shareComponent', videojs.ShareButton);
+	
+	
+	
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,11 +73,10 @@
 	
 	
 	// Create the overlay and container for the links
-	
-	videojs.ShareContainer = videojs.extend(Component,{
+	videojs.ShareContainer = videojs.Component.extend({
 		init: function( player, options ) {
 			// call the parent constructor
-			Component.call( this, player, options );
+			videojs.Component.call( this, player, options );
 			
 		}
 	});
@@ -171,9 +169,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	// This is the base class for the share items.  Each Icon can be passed a "Name" and an icon class.
-	videojs.OverlaySocialButton = videojs.extend(Button,{
-		constructor: function( player, options ) {
-			Button.call(this, player, options );
+	videojs.OverlaySocialButton = videojs.Button.extend({
+		init: function( player, options ) {
+			videojs.Button.call(this, player, options );
 			
 		}
 	});
@@ -218,8 +216,8 @@
 	
 	// These are the indvidual buttons for each type of share.
 	// Twitter	
-	videojs.TwitterShare = videojs.extend(videojs.OverlaySocialButton,{
-		constructor: function( player, options ) {
+	videojs.TwitterShare = videojs.OverlaySocialButton.extend({
+		init: function( player, options ) {
 			videojs.OverlaySocialButton.call( this, player, options );
 		}
 	});
@@ -229,8 +227,8 @@
 	};
 		
 	// Facebook	
-	videojs.FacebookShare = videojs.extend(videojs.OverlaySocialButton,{
-		constructor: function( player, options ) {
+	videojs.FacebookShare = videojs.OverlaySocialButton.extend({
+		init: function( player, options ) {
 			videojs.OverlaySocialButton.call( this, player, options );
 		}
 	});
@@ -240,8 +238,8 @@
 	};
 		
 	// Pinterest
-	videojs.PinterestShare = videojs.extend(videojs.OverlaySocialButton,{
-		constructor: function( player, options ) {
+	videojs.PinterestShare = videojs.OverlaySocialButton.extend({
+		init: function( player, options ) {
 			videojs.OverlaySocialButton.call( this, player, options );
 		}
 	});
@@ -251,8 +249,8 @@
 	};
 	
 	// Google Plus
-	videojs.GooglePlusShare = videojs.extend(videojs.OverlaySocialButton,{
-		constructor: function( player, options ) {
+	videojs.GooglePlusShare = videojs.OverlaySocialButton.extend({
+		init: function( player, options ) {
 			videojs.OverlaySocialButton.call( this, player, options );
 		}
 	});	
@@ -262,8 +260,8 @@
 	};
 	
 	// LinkedIn
-	videojs.LinkedInShare = videojs.extend(videojs.OverlaySocialButton,{
-		constructor: function( player, options ) {
+	videojs.LinkedInShare = videojs.OverlaySocialButton.extend({
+		init: function( player, options ) {
 			videojs.OverlaySocialButton.call( this, player, options );
 		}
 	});	
@@ -285,9 +283,10 @@
 		// Set the default position for the sharing button. Default: control-bar
 		var onScreen = options.onScreen || false; 
 		// Now we remove the onScreen option as it does not pertain to anything inside the button.
-		delete options.onScrreen;
+		delete options.onScreen;
 		
 		var shareButton;
+		
 		// Should the button be added to the control bar or screen?
 		if ( onScreen ) {
 			shareButton = this.addChild( shareComponent );

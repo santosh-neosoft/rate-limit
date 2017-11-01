@@ -5,27 +5,27 @@
      <title>Videojs</title>
          <!--STYLES-->
 	<link rel="stylesheet" href="/styles/cosmo.min.css">
-	<!-- <link rel="stylesheet" href="/styles/hu.css"> -->
-	<link href="//vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">
-	<link href="//cdn.rawgit.com/mmcc/videojs-skin-twitchy/v1.0.0/dist/videojs-skin-twitchy.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="/styles/style.css">
+	<link rel="stylesheet" href="video-js.css">
+	<!-- <link href="//vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet"> -->
+	<!-- <link href="//cdn.rawgit.com/mmcc/videojs-skin-twitchy/v1.0.0/dist/videojs-skin-twitchy.css" rel="stylesheet" type="text/css"> -->
+	<!-- <link rel="stylesheet" href="/styles/style.css"> -->
 	<!-- <link rel="stylesheet" href="/videojs.ads.css"> -->
 	<!-- <link rel="stylesheet" href="/styles/videojs.addThis.css"> -->
-	<link href="videojs-seek-buttons.css" rel="stylesheet">
+	<!-- <link href="videojs-seek-buttons.css" rel="stylesheet"> -->
 	<style>
 			.icon-list li span { font-size: 150% }
     </style>
 	<!--STYLES END-->
 <script src="/js/dependencies/jquery-1.12.3.min.js"></script>
 
-<script src="//vjs.zencdn.net/5.19/video.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.6.6/videojs-contrib-hls.js"></script>
-<!-- <script src="/js/video.dev.js"></script> -->
+<!-- <script src="//vjs.zencdn.net/5.19/video.min.js"></script> -->
+<script src="video.js"></script>
 <!-- <script src="/videojs.ads.js"></script> -->
-<!-- <link href="/styles/socialOverlay.css" rel="stylesheet" /> -->
-<link rel="stylesheet" href="/videojs.socialShare.css">
-<script src="/videojs.socialShare.js"></script>
-<!-- <script src="/js/socialOverlay.js"></script> -->
+<link href="/styles/socialOverlay.css" rel="stylesheet" />
+<!-- <link rel="stylesheet" href="/videojs.socialShare.css"> -->
+<!-- <script src="/videojs.socialShare.js"></script> -->
+<script src="/js/socialOverlay.js"></script>
+<script src="/videojs-seek-buttons.min.js"></script>
    </head>
     <nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -57,8 +57,6 @@
     <script src="/js/dependencies/jquery.validate.min.js"></script>
     <script src="/js/angular.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>  
-
-	<script src="/videojs-seek-buttons.min.js"></script>
 	<!-- <script src="youtube-video.js"></script> -->
 	<!--SCRIPTS END-->
 	
@@ -74,60 +72,78 @@
 		// 	// 	//volumeControl: false
   		// 	// }
 		// });
-		
-		var myPlayer = videojs('my-player', {
-			'techOrder': ["html5", "flash"],
-			// 'controls': false,
-			// 'autoplay': true,
-			// 'preload':  'auto',
-			// 'loop':       true,
-			'aspectRatio':"640:267",
-			'playbackRates': [1, 1.5, 2],
-			// 'plugins': {
-			// 	'addThis': {
-			// 	  'reddit': false,
-			// 	  'delicious': false,
-			// 	  'website_url': "http://www.google.com"
-			// 	}
-			// }
-				'plugins':{
-					'socialOverlay': {"onScreen": true} 
-				}
-		}).ready(function(){
-			//this.playbackRate(2.0);
-		});	
-		// Get the current player's VideoTrackList object.
-		//var videoTrackList = myPlayer.videoTracks();
+		var options = {
+			// Default order of fallback technology
+			'techOrder': ['html5','flash'],
+			// techOrder: ['flash','html5'],
 
-		// // Listen to the "change" event.
-		// videoTrackList.addEventListener('change', function() {
+			'html5': {},
+			'flash': {},
 
-		// // Log the currently enabled VideoTrack label.
-		// for (var i = 0; i < videoTrackList.length; i++) {
-		// 	var track = videoTrackList[i];
+			// Default of web browser is 300x150. Should rely on source width/height.
+			// 'width': 300,
+			// 'height': 150,
+			// defaultVolume: 0.85,
+			'defaultVolume': 0.00, // The freakin seaguls are driving me crazy!
 
-		// 	if (track.enabled) {
-		// 	videojs.log(track.label);
-		// 	return;
-		// 	}
-		// }
-		// });
-		myPlayer.socialShare({
-			facebook: { // optional, includes a Facebook share button (See the [Facebook documentation](https://developers.facebook.com/docs/sharing/reference/share-dialog) for more information)
-			shareUrl: 'https://www.facebook.com/narendramodi/', // optional, defaults to window.location.href
-			shareImage: '', // optional, defaults to the Facebook-scraped image
-			shareText: 'Narendra Modi'
+			// Included control sets
+			'children': {
+				'mediaLoader': {},
+				'posterImage': {},
+				'textTrackDisplay': {},
+				'loadingSpinner': {},
+				'bigPlayButton': {},
+				'controlBar': {}
 			},
-			twitter: { // optional, includes a Twitter share button (See the [Twitter documentation](https://dev.twitter.com/web/tweet-button/web-intent) for more information)
-			handle: '', // optional, appends `via @handle` to the end of the tweet 
-			shareUrl: 'https://twitter.com/narendramodi', // optional, defaults to window.location.href
-			shareText: 'Narendra Modi' 
-			}
-		});
-		myPlayer.seekButtons({
-			forward: 30,
-			back: 10
-		});
+			// Default message to show when a video cannot be played.
+			'notSupportedMessage': 'Sorry, no compatible source and playback ' +
+				'technology were found for this video. Try using another browser ' +
+				'like <a href="http://bit.ly/ccMUEC">Chrome</a> or download the ' +
+				'latest <a href="http://adobe.ly/mwfN1">Adobe Flash Player</a>.'
+			};
+
+			var myPlayer = videojs('my-player',options);
+			//myPlayer.addChild('myButton', {});
+			
+		myPlayer.socialOverlay({"onScreen":true});
+
+		// var myPlayer = videojs('my-player', {
+		// 	//'techOrder': ["html5", "flash"],
+		// 	'controls': true,
+		// 	// 'autoplay': true,
+		// 	// 'preload':  'auto',
+		// 	// 'loop':       true,
+		// 	'aspectRatio':"640:267",
+		// 	'playbackRates': [1, 1.5, 2],
+		// 	// 'plugins': {
+		// 	// 	'addThis': {
+		// 	// 	  'reddit': false,
+		// 	// 	  'delicious': false,
+		// 	// 	  'website_url': "http://www.google.com"
+		// 	// 	}
+		// 	// }
+		// 		'plugins':{
+		// 			'socialOverlay': {"onScreen": true} 
+		// 		}
+		// }).ready(function(){
+		// 	//this.playbackRate(2.0);
+		// });	
+		// myPlayer.socialShare({
+		// 	facebook: { // optional, includes a Facebook share button (See the [Facebook documentation](https://developers.facebook.com/docs/sharing/reference/share-dialog) for more information)
+		// 	shareUrl: 'https://www.facebook.com/narendramodi/', // optional, defaults to window.location.href
+		// 	shareImage: '', // optional, defaults to the Facebook-scraped image
+		// 	shareText: 'Narendra Modi'
+		// 	},
+		// 	twitter: { // optional, includes a Twitter share button (See the [Twitter documentation](https://dev.twitter.com/web/tweet-button/web-intent) for more information)
+		// 	handle: '', // optional, appends `via @handle` to the end of the tweet 
+		// 	shareUrl: 'https://twitter.com/narendramodi', // optional, defaults to window.location.href
+		// 	shareText: 'Narendra Modi' 
+		// 	}
+		// });
+		// myPlayer.seekButtons({
+		// 	forward: 30,
+		// 	back: 10
+		// });
 		$('#videojsplay').click(function(evt){
 			evt.preventDefault();
 			//myPlayer.play();
