@@ -6,12 +6,7 @@
          <!--STYLES-->
 	<link rel="stylesheet" href="/styles/cosmo.min.css">
 	<link rel="stylesheet" href="video-js.css">
-	<!-- <link href="//vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet"> -->
-	<!-- <link href="//cdn.rawgit.com/mmcc/videojs-skin-twitchy/v1.0.0/dist/videojs-skin-twitchy.css" rel="stylesheet" type="text/css"> -->
-	<!-- <link rel="stylesheet" href="/styles/style.css"> -->
-	<!-- <link rel="stylesheet" href="/videojs.ads.css"> -->
-	<!-- <link rel="stylesheet" href="/styles/videojs.addThis.css"> -->
-	<!-- <link href="videojs-seek-buttons.css" rel="stylesheet"> -->
+
 	<style>
 			.icon-list li span { font-size: 150% }
     </style>
@@ -19,12 +14,21 @@
 <script src="/js/dependencies/jquery-1.12.3.min.js"></script>
 
 <!-- <script src="//vjs.zencdn.net/5.19/video.min.js"></script> -->
-<script src="video.js"></script>
+
+<!-- commented inner js code  -->
+<!-- <script src="video.js"></script> -->
+<!-- <script src="/js/videojs-contrib-hls-5.12.1/src/videojs-contrib-hls.min.js"></script> -->
+
+<!-- useing cdn videojs code -->
+<script src="https://unpkg.com/video.js/dist/video.js"></script>
+<script src="https://unpkg.com/videojs-flash/dist/videojs-flash.js"></script>
+<script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+
 <!-- <script src="/videojs.ads.js"></script> -->
-<link href="/styles/socialOverlay.css" rel="stylesheet" />
+<!-- <link href="/styles/socialOverlay.css" rel="stylesheet" /> -->
 <!-- <link rel="stylesheet" href="/videojs.socialShare.css"> -->
 <!-- <script src="/videojs.socialShare.js"></script> -->
-<script src="/js/socialOverlay.js"></script>
+<!-- <script src="/js/socialOverlay.js"></script> -->
 <script src="/videojs-seek-buttons.min.js"></script>
    </head>
     <nav class="navbar navbar-default">
@@ -41,7 +45,8 @@
        <div class="collapse navbar-collapse" id="mynavbar">
 		   <ul class="nav navbar-nav">
 				<li class="active"><a href="/video">video</a></li>
-				<li><a href="/video2">video 2</a></li>
+				<li><a href="/hls">HLS video </a></li>
+				
 				<li><a href="/icon">Icons</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -61,20 +66,9 @@
 	<!--SCRIPTS END-->
 	
 	<script>
-	
-		// var myPlayer = videojs('my-player',{
-		// 	muted :true,
-		// 	controls: true, 
-		// 	preload: "auto"
-
-		// 	// controlBar: {
-		// 	// 	//fullscreenToggle: false //to disable to fullscreen toggle
-		// 	// 	//volumeControl: false
-  		// 	// }
-		// });
 		var options = {
 			// Default order of fallback technology
-			'techOrder': ['html5','flash'],
+			//'techOrder': ['html5','flash'],
 			// techOrder: ['flash','html5'],
 
 			'html5': {},
@@ -105,7 +99,7 @@
 			var myPlayer = videojs('my-player',options);
 			//myPlayer.addChild('myButton', {});
 			
-		myPlayer.socialOverlay({"onScreen":true});
+		//myPlayer.socialOverlay({"onScreen":true});
 
 		// var myPlayer = videojs('my-player', {
 		// 	//'techOrder': ["html5", "flash"],
@@ -128,18 +122,6 @@
 		// }).ready(function(){
 		// 	//this.playbackRate(2.0);
 		// });	
-		// myPlayer.socialShare({
-		// 	facebook: { // optional, includes a Facebook share button (See the [Facebook documentation](https://developers.facebook.com/docs/sharing/reference/share-dialog) for more information)
-		// 	shareUrl: 'https://www.facebook.com/narendramodi/', // optional, defaults to window.location.href
-		// 	shareImage: '', // optional, defaults to the Facebook-scraped image
-		// 	shareText: 'Narendra Modi'
-		// 	},
-		// 	twitter: { // optional, includes a Twitter share button (See the [Twitter documentation](https://dev.twitter.com/web/tweet-button/web-intent) for more information)
-		// 	handle: '', // optional, appends `via @handle` to the end of the tweet 
-		// 	shareUrl: 'https://twitter.com/narendramodi', // optional, defaults to window.location.href
-		// 	shareText: 'Narendra Modi' 
-		// 	}
-		// });
 		// myPlayer.seekButtons({
 		// 	forward: 30,
 		// 	back: 10
@@ -158,24 +140,10 @@
 		// });
 		
 	</script>
-<!-- <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '965865003527790',
-      xfbml      : true,
-      version    : 'v2.10'
-    });
-    FB.AppEvents.logPageView();
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script> -->
+	<script>
+		var player = videojs('hls');
+		player.play();
+	</script>
    </body>
 
  </html>

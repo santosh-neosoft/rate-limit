@@ -48,6 +48,9 @@ app.get('/video',function(req,res){
 app.get('/icon',function(req,res){
     res.render('sample');
 });
+app.get('/hls',(req,res)=>{
+    res.render('videojs-hls');
+});
 app.get('/limit',Limiter,function(req,res){
     var ip = req.ip;
     var message = "After 5 hit you wont be able to access API ";
