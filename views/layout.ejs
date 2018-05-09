@@ -6,13 +6,13 @@
          <!--STYLES-->
 	<link rel="stylesheet" href="/styles/cosmo.min.css">
 	<link rel="stylesheet" href="video-js.css">
-
+	<link rel="stylesheet" href="/styles/global.css">
 	<style>
 			.icon-list li span { font-size: 150% }
     </style>
 	<!--STYLES END-->
 <script src="/js/dependencies/jquery-1.12.3.min.js"></script>
-
+<script src="/js/FWDUVPlayer.js"></script>
 <!-- <script src="//vjs.zencdn.net/5.19/video.min.js"></script> -->
 
 <!-- commented inner js code  -->
@@ -46,7 +46,7 @@
 		   <ul class="nav navbar-nav">
 				<li class="active"><a href="/video">video</a></li>
 				<li><a href="/hls">HLS video </a></li>
-				
+				<li><a href="/player">UVP</a></li>
 				<li><a href="/icon">Icons</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -143,6 +143,133 @@
 	<script>
 		var player = videojs('hls');
 		player.play();
+	</script>
+	<script type="text/javascript">
+		FWDUVPUtils.onReady(function(){
+	 
+			FWDUVPlayer.useYoutube = "yes";
+			 
+			new FWDUVPlayer({       
+				//main settings
+				instanceName:"player1",
+				parentId:"myDiv",
+				playlistsId:"playlists",
+				mainFolderPath:"/",
+				skinPath:"images",
+				displayType:"responsive",
+				facebookAppId:"213684265480896",
+				useDeepLinking:"yes",
+				rightClickContextMenu:"developer",
+				addKeyboardSupport:"yes",
+				autoScale:"yes",
+				showButtonsToolTip:"yes", 
+				stopVideoWhenPlayComplete:"no",
+				autoPlay:"no",
+				loop:"no",
+				shuffle:"no",
+				maxWidth:980,
+				maxHeight:552,
+				buttonsToolTipHideDelay:1.5,
+				volume:.8,
+				backgroundColor:"#000000",
+				videoBackgroundColor:"#000000",
+				posterBackgroundColor:"#000000",
+				buttonsToolTipFontColor:"#5a5a5a",
+				//logo settings
+				showLogo:"yes",
+				hideLogoWithController:"yes",
+				logoPosition:"topRight",
+				logoLink:"http://www.webdesign-flash.ro/",
+				logoMargins:5,
+				//playlists/categories settings
+				showPlaylistsButtonAndPlaylists:"yes",
+				showPlaylistsByDefault:"no",
+				thumbnailSelectedType:"opacity",
+				startAtPlaylist:0,
+				buttonsMargins:0,
+				thumbnailMaxWidth:350, 
+				thumbnailMaxHeight:350,
+				horizontalSpaceBetweenThumbnails:40,
+				verticalSpaceBetweenThumbnails:40,
+				//playlist settings
+				showPlaylistButtonAndPlaylist:"yes",
+				playlistPosition:"right",
+				showPlaylistByDefault:"yes",
+				showPlaylistName:"yes",
+				showSearchInput:"yes",
+				showLoopButton:"yes",
+				showShuffleButton:"yes",
+				showNextAndPrevButtons:"yes",
+				forceDisableDownloadButtonForFolder:"yes",
+				addMouseWheelSupport:"yes", 
+				startAtRandomVideo:"no",
+				folderVideoLabel:"VIDEO ",
+				playlistRightWidth:310,
+				playlistBottomHeight:599,
+				startAtVideo:0,
+				maxPlaylistItems:50,
+				thumbnailWidth:70,
+				thumbnailHeight:70,
+				spaceBetweenControllerAndPlaylist:2,
+				spaceBetweenThumbnails:2,
+				scrollbarOffestWidth:8,
+				scollbarSpeedSensitivity:.5,
+				playlistBackgroundColor:"#000000",
+				playlistNameColor:"#FFFFFF",
+				thumbnailNormalBackgroundColor:"#1b1b1b",
+				thumbnailHoverBackgroundColor:"#313131",
+				thumbnailDisabledBackgroundColor:"#272727",
+				searchInputBackgroundColor:"#000000",
+				searchInputColor:"#999999",
+				youtubeAndFolderVideoTitleColor:"#FFFFFF",
+				youtubeOwnerColor:"#888888",
+				youtubeDescriptionColor:"#888888",
+				//controller settings
+				showControllerWhenVideoIsStopped:"yes",
+				showNextAndPrevButtonsInController:"no",
+				showVolumeButton:"yes",
+				showTime:"yes",
+				showYoutubeQualityButton:"yes",
+				showInfoButton:"yes",
+				showDownloadButton:"yes",
+				showFacebookButton:"yes",
+				showEmbedButton:"yes",
+				showFullScreenButton:"yes",
+				repeatBackground:"yes",
+				controllerHeight:37,
+				controllerHideDelay:3,
+				startSpaceBetweenButtons:7,
+				spaceBetweenButtons:8,
+				scrubbersOffsetWidth:2,
+				mainScrubberOffestTop:14,
+				timeOffsetLeftWidth:5,
+				timeOffsetRightWidth:3,
+				timeOffsetTop:0,
+				volumeScrubberHeight:80,
+				volumeScrubberOfsetHeight:12,
+				timeColor:"#888888",
+				youtubeQualityButtonNormalColor:"#888888",
+				youtubeQualityButtonSelectedColor:"#FFFFFF",
+				//embed window and info window
+				embedAndInfoWindowCloseButtonMargins:0,
+				borderColor:"#333333",
+				mainLabelsColor:"#FFFFFF",
+				secondaryLabelsColor:"#a1a1a1",
+				shareAndEmbedTextColor:"#5a5a5a",
+				inputBackgroundColor:"#000000",
+				inputColor:"#FFFFFF",
+				//ads
+				openNewPageAtTheEndOfTheAds:"no",
+				playAdsOnlyOnce:"no",
+				adsButtonsPosition:"left",
+				skipToVideoText:"You can skip to video in: ",
+				skipToVideoButtonText:"Skip Ad",
+				adsTextNormalColor:"#888888",
+				adsTextSelectedColor:"#FFFFFF",
+				adsBorderNormalColor:"#666666",
+				adsBorderSelectedColor:"#FFFFFF"
+			});
+		});
 	</script>
    </body>
 
